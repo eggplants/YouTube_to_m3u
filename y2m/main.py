@@ -62,7 +62,7 @@ def main(test=None) -> None:
         res = y2m.parse_info(args.info)
         print("\n".join(res))
     elif args.out[0]:
-        if args.force:
+        if (args.out[1] and args.force) or not args.out[1]:
             res = y2m.parse_info(args.info)
             print("\n".join(res), file=open(args.out[0], "w"))
             print("wrote:", args.out[0])
