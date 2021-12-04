@@ -47,25 +47,44 @@ y2m.parse_info(info_file_path: str) -> list[str]: ...
 ### CLI
 
 ```shellsession
-$ y2m ytlive_channel.txt -o ytlive.m3u
+$ y2mconv ytlive_channel.txt -o ytlive.m3u
 wrote: ytlive.m3u
+$ y2mlink "https://www.youtube.com/c/mangalamtv/live"
+https://manifest.googlevideo.com/api/manifest/hls_variant/.../file/index.m3u
 ```
 
 ```shellsession
-$ y2m -h
-usage: y2m [-h] [-o OUT] [-f] [-V] info
+$ y2mconv -h
+usage: y2mconv [-h] [-o OUT] [-f] [-V] info
 
-Grab m3u from YouTube live
+Convert YouTube Live info file into m3u
 
 positional arguments:
-  info               input YouTubeLive info file path (ex:
-                     https://git.io/JMQZz)
+  info               input YouTube Live info file path
 
 optional arguments:
   -h, --help         show this help message and exit
   -o OUT, --out OUT  output m3u path (overwrite: `-f`)
   -f, --force        overwrite if output path is exist
   -V, --version      show program's version number and exit
+
+example input file: https://git.io/JMQ7B
+$ y2mlink -h
+usage: y2mlink [-h] [-V] url
+
+Convert YouTube Live link into m3u one
+
+positional arguments:
+  url            input YouTube url
+
+optional arguments:
+  -h, --help     show this help message and exit
+  -V, --version  show program's version number and exit
+
+valid url pattern:
+/^https://www.youtube.com/(?:user|channel)/[a-zA-Z0-9_-]+/live/?$/
+/^https://www.youtube.com/watch?v=[a-zA-Z0-9_-]+/
+/^https://www.youtube.com/c/[a-zA-Z0-9_-]+/live/?$/
 ```
 
 ## Input file format

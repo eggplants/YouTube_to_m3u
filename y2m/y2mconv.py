@@ -26,12 +26,19 @@ def check_output_path(path):
 
 # type: (list[str] | None) -> argparse.Namespace
 def parse_args(test=None):
-    parser = argparse.ArgumentParser(description="Grab m3u from YouTube live")
+    parser = argparse.ArgumentParser(
+        description="Convert YouTube Live info file into m3u",
+        epilog=(
+            "example input file:\n"
+            "https://git.io/JMQ7B"
+            ))
 
     parser.add_argument(
         "info",
         type=check_input_path,
-        help="input YouTubeLive info file path (ex: https://git.io/JMQZz)",
+        help=(
+            "input YouTube Live info file path"
+        ),
     )
     parser.add_argument(
         "-o", "--out", type=check_output_path, help="output m3u path (overwrite: `-f`)"
