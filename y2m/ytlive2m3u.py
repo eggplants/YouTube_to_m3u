@@ -38,7 +38,7 @@ class YtLive2m3u:
         test3 = re.match(r'^https://www\.youtube\.com/c/[a-zA-Z0-9_-]+/live/?$', url)
         return any((test1, test2, test3,))
 
-    # (str) -> list[str]
+    # type: (str) -> list[str]
     @classmethod
     def parse_info(cls, path):
         res = []
