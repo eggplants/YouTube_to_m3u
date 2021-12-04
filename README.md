@@ -27,7 +27,7 @@ $ pip install y2m
 ### Library
 
 ```python
-from y2m import *
+from y2m import y2m
 
 # `<channel name> | <group name> | <logo> | <tvg-id>`
 # -> `#EXTINF:-1 group-title="<group name>" tvg-logo="<logo>" tvg-id="<tvg-id>", <channel name>`
