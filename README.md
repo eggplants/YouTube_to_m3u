@@ -2,7 +2,9 @@
 
 [![M3U generator](https://github.com/eggplants/y2m/actions/workflows/update.yml/badge.svg)](https://github.com/eggplants/y2m/actions/workflows/update.yml)
 
-- A Python Library `y2m` and two CLI `y2mconv` and `y2mlink` enables to get m3u from YouTube live link(s)
+- Enables to get m3u from YouTube live link(s) easily
+  - A Python Library `y2m`
+  - Two CLI `y2mconv` and `y2mlink`
 - Forked from [benmoose39/YouTube_to_m3u](https://github.com/benmoose39/YouTube_to_m3u)
 
 ## Install
