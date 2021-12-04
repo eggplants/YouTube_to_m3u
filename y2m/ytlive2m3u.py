@@ -18,15 +18,24 @@ class YtLive2m3u:
             )
 
     # type: (str) -> str
-    @staticmethod
-    def convert_ytlive_to_m3u(url):
+    @classmethod
+    def convert_ytlive_to_m3u(cls, url):
         """https://www.youtube.com/(?:user|channel)/[a-zA-Z0-9_-]+/live"""
-        response = urlopen(url, timeout=15).read()
+        if not cls.is_valid_url(url):
+            raise ValueError(url)
+        response = urlopen(url, timeout=15).read().decode('utf-8')
         m = re.findall(r'https://[^"]+.m3u', response)
         if len(m) != 1:
             return "https://raw.githubusercontent.com/eggplants/YouTube_to_m3u/main/assets/moose_na.m3u"
         else:
             return m[0]
+
+    # type: (str) -> bool
+    @staticmethod
+    def is_valid_url(url):
+        test1 = re.match(r'^https://www\.youtube\.com/(?:user|channel)/[a-zA-Z0-9_-]+/live/?$', url)
+        test2 = re.match(r'^https://www\.youtube\.com/watch\?v=[a-zA-Z0-9_-]+', url)
+        return any((test1, test2,))
 
     # (str) -> list[str]
     @classmethod
@@ -40,7 +49,7 @@ class YtLive2m3u:
             elif not is_url:
                 res.append(cls.meta_fields_to_extinf(line))
                 is_url = True
-            elif is_url and line.startswith("https://www.youtube.com/"):
+            elif is_url and cls.is_valid_url(line):
                 res.append(cls.convert_ytlive_to_m3u(line))
                 is_url = False
             else:
