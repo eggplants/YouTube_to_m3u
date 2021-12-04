@@ -1,5 +1,7 @@
 # `y2m`: YouTube Live to m3u
 
+[![M3U generator](https://github.com/eggplants/y2m/actions/workflows/update.yml/badge.svg)](https://github.com/eggplants/y2m/actions/workflows/update.yml)
+
 Forked from [benmoose39/YouTube_to_m3u](https://github.com/benmoose39/YouTube_to_m3u)
 
 ## Install
