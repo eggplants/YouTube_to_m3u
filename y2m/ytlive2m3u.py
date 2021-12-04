@@ -35,7 +35,8 @@ class YtLive2m3u:
     def is_valid_url(url):
         test1 = re.match(r'^https://www\.youtube\.com/(?:user|channel)/[a-zA-Z0-9_-]+/live/?$', url)
         test2 = re.match(r'^https://www\.youtube\.com/watch\?v=[a-zA-Z0-9_-]+', url)
-        return any((test1, test2,))
+        test3 = re.match(r'^https://www\.youtube\.com/c/[a-zA-Z0-9_-]+/live/?$', url)
+        return any((test1, test2, test3,))
 
     # (str) -> list[str]
     @classmethod
