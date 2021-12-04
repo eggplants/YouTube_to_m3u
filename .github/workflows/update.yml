@@ -27,7 +27,7 @@ jobs:
         git config --global user.name "GitHub Action"
     - name: Run
       run: |
-        y2mconv youtube_channel_info.txt -o youtube.m3u
+        y2mconv youtube_channel_info.txt -o youtube.m3u -f
     - name: git add
       run: |
         git add -A
