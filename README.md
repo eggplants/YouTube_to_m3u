@@ -69,6 +69,9 @@ optional arguments:
   -V, --version      show program's version number and exit
 
 example input file: https://git.io/JMQ7B
+```
+
+```shellsession
 $ y2mlink -h
 usage: y2mlink [-h] [-V] url
 
