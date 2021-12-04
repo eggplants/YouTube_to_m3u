@@ -53,6 +53,6 @@ class YtLive2m3u:
                 res.append(cls.convert_ytlive_to_m3u(line))
                 is_url = False
             else:
-                raise ValueError("info file is maybe invalid syntax")
+                raise ValueError("info file is maybe invalid syntax\n{}".format(line))
         else:
             return res
