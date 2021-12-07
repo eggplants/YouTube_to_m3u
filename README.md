@@ -1,6 +1,13 @@
 # `y2m`: YouTube Live to m3u
 
-[![M3U generator](https://github.com/eggplants/y2m/actions/workflows/update.yml/badge.svg)](https://github.com/eggplants/y2m/actions/workflows/update.yml)
+[![PyPI]](https://pypi.org/project/y2m
+) [![PyPI - Python Version]](https://pypi.org/project/y2m
+)
+
+[![M3U generator]](https://github.com/eggplants/y2m/actions/workflows/update.yml
+) [![Release Package]](https://github.com/eggplants/y2m/actions/workflows/release.yml
+) [![Maintainability]](https://codeclimate.com/github/eggplants/y2m/maintainability
+)
 
 - Enables to get m3u from YouTube live link(s) easily
   - A Python Library `y2m`
@@ -17,13 +24,11 @@ cd y2m
 pip install .
 ```
 
-<!--
 ## From PyPI
 
 ```shellsession
 $ pip install y2m
 ```
--->
 
 ## Usage
 
@@ -103,3 +108,9 @@ valid url pattern:
 https://www.youtube.com/(?:user|channel)/[a-zA-Z0-9_-]+/live
 ...
 ```
+
+[M3U generator]: https://github.com/eggplants/y2m/actions/workflows/update.yml/badge.svg
+[Release Package]: https://github.com/eggplants/y2m/actions/workflows/release.yml/badge.svg
+[PyPI]: https://img.shields.io/pypi/v/y2m?color=blue
+[PyPI - Python Version]: https://img.shields.io/pypi/pyversions/y2m
+[Maintainability]: https://api.codeclimate.com/v1/badges/0faa71da213d0de59a60/maintainability
