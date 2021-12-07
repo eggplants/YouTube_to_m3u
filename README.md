@@ -26,8 +26,8 @@ pip install .
 
 ## From PyPI
 
-```shellsession
-$ pip install y2m
+```bash
+pip install y2m
 ```
 
 ## Usage
