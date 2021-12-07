@@ -1,8 +1,8 @@
 name: M3U generator
 on:
-  schedule:
-    - cron: '0 0/3 * * *'
   workflow_dispatch:
+  # schedule:
+  #   - cron: '0 0/3 * * *'
 
 jobs:
   update:
