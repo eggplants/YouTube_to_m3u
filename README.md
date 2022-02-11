@@ -32,26 +32,6 @@ pip install y2m
 
 ## Usage
 
-### Library
-
-```python
-from y2m import y2m
-
-# `<channel name> | <group name> | <logo> | <tvg-id>`
-# -> `#EXTINF:-1 group-title="<group name>" tvg-logo="<logo>" tvg-id="<tvg-id>", <channel name>`
-y2m.meta_fields_to_extinf(fields: str) -> str: ...
-
-# `https://www.youtube.com/(?:user|channel)/[a-zA-Z0-9_-]+/live`
-# -> `https://manifest.googlevideo.com/.../index.m3u`
-y2m.convert_ytlive_to_m3u(url: str) -> str: ...
-
-# url -> bool
-y2m.is_valid_url(url: str) -> bool: ...
-
-# `ytlive_channel.txt` -> `ytlive.m3u`
-y2m.parse_info(info_file_path: str) -> list[str]: ...
-```
-
 ### CLI
 
 ```shellsession
@@ -96,6 +76,26 @@ valid url pattern:
 /^https://www.youtube.com/(?:user|channel)/[a-zA-Z0-9_-]+/live/?$/
 /^https://www.youtube.com/watch?v=[a-zA-Z0-9_-]+/
 /^https://www.youtube.com/c/[a-zA-Z0-9_-]+/live/?$/
+```
+
+### Library
+
+```python
+from y2m import y2m
+
+# `<channel name> | <group name> | <logo> | <tvg-id>`
+# -> `#EXTINF:-1 group-title="<group name>" tvg-logo="<logo>" tvg-id="<tvg-id>", <channel name>`
+y2m.meta_fields_to_extinf(fields: str) -> str: ...
+
+# `https://www.youtube.com/(?:user|channel)/[a-zA-Z0-9_-]+/live`
+# -> `https://manifest.googlevideo.com/.../index.m3u`
+y2m.convert_ytlive_to_m3u(url: str) -> str: ...
+
+# url -> bool
+y2m.is_valid_url(url: str) -> bool: ...
+
+# `ytlive_channel.txt` -> `ytlive.m3u`
+y2m.parse_info(info_file_path: str) -> list[str]: ...
 ```
 
 ## Input file format
