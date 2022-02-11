@@ -1,11 +1,11 @@
 import re
+from typing import List
 from urllib.request import urlopen
 
 
 class YtLive2m3u:
-    # type: (str) -> str
     @staticmethod
-    def meta_fields_to_extinf(line):
+    def meta_fields_to_extinf(line: str) -> str:
         """<channel name> | <group name> | <logo> | <tvg-id>"""
         fields = [i.strip() for i in line.split("|")]
         nf = len(fields)
@@ -17,30 +17,38 @@ class YtLive2m3u:
                 grp_title.title(), tvg_logo, tvg_id, ch_name
             )
 
-    # type: (str) -> str
     @classmethod
-    def convert_ytlive_to_m3u(cls, url):
+    def convert_ytlive_to_m3u(cls, url: str) -> str:
         """https://www.youtube.com/(?:user|channel)/[a-zA-Z0-9_-]+/live"""
         if not cls.is_valid_url(url):
             raise ValueError(url)
-        response = urlopen(url, timeout=15).read().decode('utf-8')
-        m = re.findall(r'https://[^"]+.m3u', response)
-        if len(m) != 1:
-            return "https://raw.githubusercontent.com/eggplants/YouTube_to_m3u/main/assets/moose_na.m3u"
+        response = urlopen(url, timeout=15).read().decode("utf-8")
+        m: List[str] = re.findall(r'https://[^"]+.m3u', response)
+        if len(m) == 0:
+            return (
+                "https://raw.githubusercontent.com/eggplants/YouTube_to_m3u"
+                "/main/assets/moose_na.m3u"
+            )
         else:
             return m[0]
 
-    # type: (str) -> bool
     @staticmethod
-    def is_valid_url(url):
-        test1 = re.match(r'^https://www\.youtube\.com/(?:user|channel)/[a-zA-Z0-9_-]+/live/?$', url)
-        test2 = re.match(r'^https://www\.youtube\.com/watch\?v=[a-zA-Z0-9_-]+', url)
-        test3 = re.match(r'^https://www\.youtube\.com/c/[a-zA-Z0-9_-]+/live/?$', url)
-        return any((test1, test2, test3,))
+    def is_valid_url(url: str) -> bool:
+        test1 = re.match(
+            r"^https://www\.youtube\.com/(?:user|channel)/[a-zA-Z0-9_-]+/live/?$", url
+        )
+        test2 = re.match(r"^https://www\.youtube\.com/watch\?v=[a-zA-Z0-9_-]+", url)
+        test3 = re.match(r"^https://www\.youtube\.com/c/[a-zA-Z0-9_-]+/live/?$", url)
+        return any(
+            (
+                test1,
+                test2,
+                test3,
+            )
+        )
 
-    # type: (str) -> list[str]
     @classmethod
-    def parse_info(cls, path):
+    def parse_info(cls, path: str) -> List[str]:
         res = []
         is_url = False
         for line in open(path, "r").readlines():

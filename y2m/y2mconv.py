@@ -1,11 +1,11 @@
 import argparse
 from os.path import isdir, isfile
+from typing import List, Optional, Tuple
 
 from y2m import __version__, y2m
 
 
-# type: (str) -> str
-def check_input_path(path):
+def check_input_path(path: str) -> str:
     if isdir(path):
         raise ValueError("{} is dir".format(path))
     elif isfile(path):
@@ -14,8 +14,7 @@ def check_input_path(path):
         raise FileNotFoundError(path)
 
 
-# type: (str) -> tuple[str, bool]
-def check_output_path(path):
+def check_output_path(path: str) -> Tuple[str, bool]:
     if isdir(path):
         raise ValueError("{} is dir".format(path))
     elif isfile(path):
@@ -24,21 +23,16 @@ def check_output_path(path):
         return (path, False)
 
 
-# type: (list[str] | None) -> argparse.Namespace
-def parse_args(test=None):
+def parse_args(test: Optional[List[str]] = None) -> argparse.Namespace:
     parser = argparse.ArgumentParser(
         description="Convert YouTube Live info file into m3u",
-        epilog=(
-            "example input file:\n"
-            "https://git.io/JMQ7B"
-            ))
+        epilog=("example input file:\n" "https://git.io/JMQ7B"),
+    )
 
     parser.add_argument(
         "info",
         type=check_input_path,
-        help=(
-            "input YouTube Live info file path"
-        ),
+        help=("input YouTube Live info file path"),
     )
     parser.add_argument(
         "-o", "--out", type=check_output_path, help="output m3u path (overwrite: `-f`)"
@@ -59,8 +53,7 @@ def parse_args(test=None):
     return args
 
 
-# type: (list[str] | None) -> argparse.Namespace
-def main(test=None) -> None:
+def main(test: Optional[List[str]] = None) -> None:
     if test is None:
         args = parse_args(test)
     else:

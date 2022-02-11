@@ -1,32 +1,31 @@
 import argparse
+from typing import List, Optional
 
 from y2m import __version__, y2m
 
 
-# type: (str) -> str
-def check_input_url(url):
+def check_input_url(url: str) -> str:
     if y2m.is_valid_url(url):
         return url
     else:
         raise ValueError("{} is invalid url".format(url))
 
 
-# type: (list[str] | None) -> argparse.Namespace
-def parse_args(test=None):
+def parse_args(test: Optional[List[str]] = None) -> argparse.Namespace:
     parser = argparse.ArgumentParser(
         description="Convert YouTube Live link into m3u one",
         epilog=(
-            'valid url pattern:\n'
-            '/^https://www.youtube.com/(?:user|channel)/[a-zA-Z0-9_-]+/live/?$/\n'
-            '/^https://www.youtube.com/watch?v=[a-zA-Z0-9_-]+/\n'
-            '/^https://www.youtube.com/c/[a-zA-Z0-9_-]+/live/?$/'
-        )
+            "valid url pattern:\n"
+            "/^https://www.youtube.com/(?:user|channel)/[a-zA-Z0-9_-]+/live/?$/\n"
+            "/^https://www.youtube.com/watch?v=[a-zA-Z0-9_-]+/\n"
+            "/^https://www.youtube.com/c/[a-zA-Z0-9_-]+/live/?$/"
+        ),
     )
 
     parser.add_argument(
         "url",
         type=check_input_url,
-        help='input YouTube url',
+        help="input YouTube url",
     )
     parser.add_argument(
         "-V",
@@ -41,8 +40,7 @@ def parse_args(test=None):
     return args
 
 
-# type: (list[str] | None) -> argparse.Namespace
-def main(test=None) -> None:
+def main(test: Optional[List[str]] = None) -> None:
     if test is None:
         args = parse_args(test)
     else:
