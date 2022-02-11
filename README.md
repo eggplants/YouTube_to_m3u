@@ -24,7 +24,7 @@ cd y2m
 pip install .
 ```
 
-## From PyPI
+### From PyPI
 
 ```bash
 pip install y2m
