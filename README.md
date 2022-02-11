@@ -2,6 +2,7 @@
 
 [![PyPI]](https://pypi.org/project/y2m
 ) [![PyPI - Python Version]](https://pypi.org/project/y2m
+) [![Style Check]](https://github.com/eggplants/y2m/actions/workflows/style-check.yml
 )
 
 [![M3U generator]](https://github.com/eggplants/y2m/actions/workflows/update.yml
@@ -114,3 +115,4 @@ https://www.youtube.com/(?:user|channel)/[a-zA-Z0-9_-]+/live
 [PyPI]: https://img.shields.io/pypi/v/y2m?color=blue
 [PyPI - Python Version]: https://img.shields.io/pypi/pyversions/y2m
 [Maintainability]: https://api.codeclimate.com/v1/badges/0faa71da213d0de59a60/maintainability
+[Style Check]: https://github.com/eggplants/y2m/actions/workflows/style-check.yml/badge.svg
